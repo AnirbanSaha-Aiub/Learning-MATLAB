@@ -1,0 +1,14 @@
+A1 = 18;
+A2 = 10;
+s = 11;
+fs = 10000;
+t = 0:1/fs:1-1/fs;
+signal = A1*sin(2*pi*3*100*t) + A2*cos(2*pi*7*100*t);
+noise = s*randn(size(t));
+SNR = snr(signal, noise)
+SNR = snr(signal);
+bandwidth = obw(signal, fs)
+capacity = bandwidth*log2(1+SNR)
+%bit_rate = capacity%
+bit_rate = 1.0466e+03;
+Signal_Level = 2^(bit_rate/(2*bandwidth))
